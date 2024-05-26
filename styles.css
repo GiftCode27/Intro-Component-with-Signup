@@ -93,6 +93,9 @@ input {
 
 input.error {
   border: 1px solid var(--red);
+  background-image: url('./images/icon-error.svg');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
 }
 
 input:hover,
@@ -132,7 +135,9 @@ small span {
   color: var(--red);
   font-size: 12px;
   margin-top: 5px;
-  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   display: none;
 }
 
