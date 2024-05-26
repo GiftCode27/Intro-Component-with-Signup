@@ -1,59 +1,67 @@
-// app.js
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('signupForm');
     const firstName = document.getElementById('firstName');
     const lastName = document.getElementById('lastName');
     const email = document.getElementById('email');
     const password = document.getElementById('password');
-    const togglePassword = document.getElementById('togglePassword');
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        let valid = true;
-
-        // Clear previous errors
-        clearErrors();
-
-        // Validate First Name
-        if (firstName.value.trim() === '') {
-            showError(firstName, 'First Name cannot be empty');
-            valid = false;
-        }
-
-        // Validate Last Name
-        if (lastName.value.trim() === '') {
-            showError(lastName, 'Last Name cannot be empty');
-            valid = false;
-        }
-
-        // Validate Email
-        if (!isValidEmail(email.value.trim())) {
-            showError(email, 'Looks like this is not an email');
-            valid = false;
-        }
-
-        // Validate Password
-        if (password.value.trim() === '') {
-            showError(password, 'Password cannot be empty');
-            valid = false;
-        }
-
-        if (valid) {
-            alert('Form submitted successfully!');
-        }
+  
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+  
+      validateForm();
     });
-
-    togglePassword.addEventListener('click', () => {
-        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-        password.setAttribute('type', type);
-        togglePassword.textContent = type === 'password' ? '👁️' : '🙈';
-    });
-
-    function showError(input, message) {
-        const errorElement = input.nextElementSibling;
-        errorElement.style.display = 'flex';
-        errorElement.querySelector('img').style.display = 'inline';
-        errorElement.querySelector('span').textContent = message;
-        input.classList
-
+  
+    function validateForm() {
+      let isValid = true;
+  
+      if (!firstName.value.trim()) {
+        showError(firstName, 'firstNameError');
+        isValid = false;
+      } else {
+        hideError('firstNameError');
+      }
+  
+      if (!lastName.value.trim()) {
+        showError(lastName, 'lastNameError');
+        isValid = false;
+      } else {
+        hideError('lastNameError');
+      }
+  
+      if (!email.value.trim() || !validateEmail(email.value.trim())) {
+        showError(email, 'emailError');
+        isValid = false;
+      } else {
+        hideError('emailError');
+      }
+  
+      if (!password.value.trim()) {
+        showError(password, 'passwordError');
+        isValid = false;
+      } else {
+        hideError('passwordError');
+      }
+  
+      if (isValid) {
+        // Handle form submission
+        console.log('Form is valid');
+      }
+    }
+  
+    function showError(input, errorId) {
+      const errorMessage = document.getElementById(errorId);
+      input.classList.add('error');
+      errorMessage.style.display = 'flex';
+    }
+  
+    function hideError(errorId) {
+      const errorMessage = document.getElementById(errorId);
+      errorMessage.style.display = 'none';
+    }
+  
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+  });
   
