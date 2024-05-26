@@ -1,4 +1,4 @@
-// script.js
+// app.js
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('signupForm');
     const firstName = document.getElementById('firstName');
