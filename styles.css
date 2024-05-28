@@ -15,19 +15,14 @@ body {
 
 .container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  padding: 20px;
-}
-
-.content {
-  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100%;
+  max-width: 1200px;
+  background: url('images/bg-intro-desktop.png') no-repeat center center/cover;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .container-text {
@@ -37,27 +32,33 @@ body {
 }
 
 .container-text h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
 
 .container-text p {
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.5;
 }
 
 .container-form {
   background-color: white;
-  padding: 20px;
+  padding: 40px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
+  position: relative;
 }
 
 .container-form h4 {
+  background-color: black; /* Updated to black */
+  color: white; /* Text color to white */
   font-size: 1rem;
   margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .container-form span {
@@ -117,3 +118,4 @@ body {
   color: #ff7979;
   cursor: pointer;
 }
+
